@@ -6,8 +6,8 @@ name = "pypi"
 [packages]
 flask = "*"
 requests = "*"
-sqlite="*"
-flask-toastr="*" 
+pysqlite3 ="*"
+Flask-toastr="*" 
 
 
 [dev-packages]
