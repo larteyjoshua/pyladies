@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PyLadies | Welcome</title>
+    <!-- Styles -->
+    <link href="../static/css/materialize/css/materialize.min.css" rel="stylesheet">
+    <link href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+
+        html {
+            font-family: 'Palatino Linotype', sans-serif;
+
+        }
+        .background {
+            background-image: url( 'static/images/bg.jpg' );
+            background-repeat:no-repeat;
+            background-position:100% 100%;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            background-attachment: fixed;
+        }
+
+        input[type=text] {
+            font-size: 20px !important;
+            color: green;
+            font-family: Consolas;
+        }
+
+        .fa-microphone {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="grey lighten-4 background">
+
+    {{ toastr.include_jquery() }}
+    {{ toastr.include_toastr_css() }}
+    {{ toastr.message() }}
+<!--Header-->
+<nav style="opacity: 0.8">
+    <div class="nav-wrapper white" >
+
+        <a href="#" class="brand-logo blue-text" style="margin-left: 120px;"><i class="fa fa-check-circle-o blue-text"></i>PyLadies Cape Coast
+        </a>
+
+        <ul class="right hide-on-small-only">
+            <li class="active"><a href="#" class="red-text "> <b><i class="fa fa-home"></i> Question App</b></a></li>
+            <li class=""><a href="#" class="red-text">
+                <img src="../static/images/user.jpg" style="width: 50px; height: 50px; border-radius: 50%; margin-bottom: -20px;">
+                <b style="margin-top: -10px" id="username">Admin</b>
+            </a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<!-- Input Section-->
+<div class="row" id="taskDiv">
+    <div class="col l10 offset-l1">
+        <div class="card horizontal" style="opacity: 0.8">
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p class="flow-text"> Ask a question</p>
+                    <form  action="/add_question">
+                        <div class="row input-field">
+                            <input type="text"  name="first_name" placeholder="First Name" required="">
+                        </div>
+                        <div class="row input-field">
+                            <input type="text"  name="question" placeholder="Question" required="">
+                        </div>
+                        <div class="row center">
+                            <button type="submit"class="btn blue accent-2"> Ask </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Task Card-->
+<div class="row">
+    <div class="col l10 offset-l1">
+        <div class="card horizontal" style="opacity: 0.8">
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p class="flow-text">Questions asked </p>
+                    <hr>
+                    <ul class="collection" id="tasks">
+                    </ul>
+
+<table class="collection">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Time</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Question</th>
+    </tr>
+  </thead>
+
+  <tbody class="thead-light">
+
+  {%for row in rows%}
+    <tr>
+      <th scope="row"><b>{{ row["id"] }}</b></th>
+      <td><b>{{ row["created_at"]}}</b></td>
+      <td><b>{{row ["first_name"]}}</b></td>
+      <td><b>{{row["question"]}}</b></td>
+    </tr>
+  </tbody>
+  {%endfor%}
+</table>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="css/materialize/js/materialize.min.js"></script>
+
+<script type="text/javascript">
+  
+
+    //ask for username
+   
+    //set the time
+    function getTime() {
+        return new Date().toLocaleTimeString();
+    }
+
+    function setClock() {
+        document.getElementById('clock').innerText = getTime();
+    }
+
+    setTaskCount();
+    setInterval(setClock,1000);
+
+    //speech synthesis
+
+
+
+
+</script>
+
+
+
+{{ toastr.include_toastr_js() }}
+</body>
+</html>
