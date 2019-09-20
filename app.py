@@ -2,8 +2,6 @@ from flask import *
 import os
 import sqlite3
 from flask_toastr import Toastr
-import requests
-import json
 
 
 
@@ -75,4 +73,5 @@ def edit_question():
     return redirect("/", code=302)
 
 if __name__ == '__main__':
-    app.run()
+     port=os.environ.get('PORT', 5000)
+    app.run(debug=True, host='0.0.0.0', port=port)
