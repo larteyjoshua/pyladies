@@ -7,10 +7,10 @@ name = "pypi"
 flask = "*"
 requests = "*"
 sqlite3 = "*"
-flask_toast = "*"
+flask-toastr = "*"
 
 
 [dev-packages]
 
 [requires]
-python_version = "3.7"
+python_version = "3.6"
